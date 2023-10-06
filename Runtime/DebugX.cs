@@ -1,8 +1,9 @@
 using UnityEngine;
 
-namespace DebugX
+public class DebugX : MonoBehaviour
 {
-    public class SampleScripts : MonoBehaviour
+    public static void Log(string log)
     {
+        Debug.Log(log);
     }
 }
