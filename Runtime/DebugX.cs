@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DebugX : MonoBehaviour
+public class DebugX
 {
     public static void Log(string log)
     {
