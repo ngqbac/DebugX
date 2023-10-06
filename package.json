@@ -1,0 +1,12 @@
+{
+  "name": "com.bacnq.debugx",
+  "version": "1.0.0",
+  "displayName": "DebugX",
+  "description": "Proper debug for Unity project",
+  "unity": "2019.4",
+  "author": {
+    "name": "Nguyễn Quang Bắc",
+    "email": "ngqbac@gmail.com",
+    "url": ""
+  }
+}
