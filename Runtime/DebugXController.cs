@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 
+
 public class DebugXController : MonoBehaviour
 {
     public static DebugXController Instance;
-    public bool testBool;
-    [ConditionalField(nameof(testBool))]public int testInt;
 
     private void Awake()
     {

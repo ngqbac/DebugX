@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DebugX
 {
+    
+    
     public static void Log(string log)
     {
         if (DebugXController.Instance != null)
