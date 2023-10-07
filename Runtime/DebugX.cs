@@ -16,7 +16,7 @@ public class DebugX
         var message = log;
         if (DebugXController.Instance != null)
         {
-            message = log.Color(DebugXHelper.GetStringFromColor(DebugXController.Instance.color[(int)type]));
+            message = log.Color(DebugXHelper.GetStringFromColor(DebugXController.Instance.color.Value[(int)type]));
             if (size != -1)
             {
                 message = message.Size(size);
@@ -35,12 +35,4 @@ public class DebugX
 
         Debug.Log(message);
     }
-}
-
-public static class StringExtension
-{
-    public static string Bold(this string str) => "<b>" + str + "</b>";
-    public static string Color(this string str, string clr) => $"<color={clr}>{str}</color>";
-    public static string Italic(this string str) => "<i>" + str + "</i>";
-    public static string Size(this string str, int size) => $"<size={size}>{str}</size>";
 }

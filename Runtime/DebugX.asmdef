@@ -1,3 +1,16 @@
 {
-	"name": "DebugX"
+    "name": "DebugX",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2e78528f05ef84428b6fb03563d02ca6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

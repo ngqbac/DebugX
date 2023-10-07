@@ -1,3 +1,5 @@
+using System;
+using MyBox;
 using UnityEngine;
 
 public class DebugXController : MonoBehaviour
@@ -5,8 +7,7 @@ public class DebugXController : MonoBehaviour
     public static DebugXController Instance;
 
     public bool isOn;
-    public Color32[] color = new Color32[5];
-
+    [ConditionalField(nameof(isOn))] public ColorCollection color = new();
     private void Awake()
     {
         Instance = this;
@@ -15,29 +16,38 @@ public class DebugXController : MonoBehaviour
 
     private void OnValidate()
     {
-        if (DebugXHelper.CompareColor32(color[0], new Color32()))
+        if (DebugXHelper.CompareColor32(color.Value[0], new Color32()))
         {
-            color[0] = DebugXHelper.GetColorFromString("008000");
+            color.Value[0] = DebugXHelper.GetColorFromString("008000");
         }
 
-        if (DebugXHelper.CompareColor32(color[1], new Color32()))
+        if (DebugXHelper.CompareColor32(color.Value[1], new Color32()))
         {
-            color[1] = DebugXHelper.GetColorFromString("87CEEB");
+            color.Value[1] = DebugXHelper.GetColorFromString("87CEEB");
         }
 
-        if (DebugXHelper.CompareColor32(color[2], new Color32()))
+        if (DebugXHelper.CompareColor32(color.Value[2], new Color32()))
         {
-            color[2] = DebugXHelper.GetColorFromString("FFA500");
+            color.Value[2] = DebugXHelper.GetColorFromString("FFA500");
         }
 
-        if (DebugXHelper.CompareColor32(color[3], new Color32()))
+        if (DebugXHelper.CompareColor32(color.Value[3], new Color32()))
         {
-            color[3] = DebugXHelper.GetColorFromString("FF69B4");
+            color.Value[3] = DebugXHelper.GetColorFromString("FF69B4");
         }
 
-        if (DebugXHelper.CompareColor32(color[4], new Color32()))
+        if (DebugXHelper.CompareColor32(color.Value[4], new Color32()))
         {
-            color[4] = DebugXHelper.GetColorFromString("FF0000");
+            color.Value[4] = DebugXHelper.GetColorFromString("FF0000");
         }
+    }
+}
+
+[Serializable]
+public class ColorCollection : CollectionWrapper<Color32>
+{
+    public ColorCollection()
+    {
+        Value = new Color32[5];
     }
 }
