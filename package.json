@@ -1,12 +1,10 @@
 {
   "name": "com.bacnq.debugx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "DebugX",
-  "description": "Proper debug for Unity project",
+  "description": "Proper debug for Unity project come with some helpful function",
   "unity": "2019.4",
-  "dependencies": {
-    "com.domybest.mybox": "https://github.com/Deadcows/MyBox.git"
-  },
+  "keywords": ["Debug"],
   "author": {
     "name": "Nguyễn Quang Bắc",
     "email": "ngqbac@gmail.com",
