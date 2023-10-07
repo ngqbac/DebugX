@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DebugXHelper
 {
@@ -28,5 +30,59 @@ public class DebugXHelper
     {
         return color.r == compareColor.r && color.g == compareColor.g &&
                color.b == compareColor.b && color.a == compareColor.a;
+    }
+    
+    public static string GenerateRandomString(int length)
+    {
+        const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        var result = new char[length];
+        var random = new System.Random();
+
+        for (int i = 0; i < length; i++)
+        {
+            int index = random.Next(0, characters.Length);
+            result[i] = characters[index];
+        }
+
+        return new string(result);
+    }
+    
+    public static string ByteToMegabyte(float value)
+    {
+        return (value / 1048576).ToString("F1");
+    }
+    
+    public static string GetCurrentUnixTimestamp()
+    {
+        return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + "";
+    }
+    
+    public static List<int> RandomUniqueListNumber(int length, int from, int to)
+    {
+        var list = new List<int>();
+        if (length <= to - from)
+        {
+            var index = 0;
+            while (index < length)
+            {
+                var tmp = Random.Range(from, to);
+                if (list.Contains(tmp))
+                {
+                    tmp = Random.Range(from, to);
+                }
+                else
+                {
+                    list.Add(tmp);
+                    index++;
+                }
+            }
+
+            return list;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
