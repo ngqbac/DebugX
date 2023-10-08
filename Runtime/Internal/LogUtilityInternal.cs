@@ -5,23 +5,24 @@ namespace DebugX.LogUtility
 {
     public class LogUtilityInternal : MonoBehaviour
     {
-        public static void TurnOnLogUtility()
+        public static void TurnOn()
         {
             if (LogUtilityAttribute.Initialized)
             {
-                LogUtilityController.Instance.IsOn = true;
+                LogUtilityAttribute.IsOn = true;
             }
             else
             {
-                new GameObject("LogUtility").AddComponent<LogUtilityController>().IsOn = true;
+                new GameObject("LogUtility").AddComponent<LogUtilityController>();
+                LogUtilityAttribute.IsOn = true;
             }
         }
 
-        public static void TurnOffLogUtility()
+        public static void TurnOff()
         {
             if (LogUtilityAttribute.Initialized)
             {
-                LogUtilityController.Instance.IsOn = false;
+                LogUtilityAttribute.IsOn = false;
             }
         }
     }

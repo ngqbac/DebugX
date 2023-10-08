@@ -3,36 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DebugX.Cosole
+namespace DebugX.Console
 {
     /// <summary>
     /// A console to display Unity's debug logs in-game.
     /// </summary>
-    class ConsoleLog : MonoBehaviour
+    class ConsoleExtension : MonoBehaviour
     {
         public static Version Version = new Version(1, 1, 0);
 
         #region Inspector Settings
-
-        /// <summary>
-        /// The hotkey to show and hide the console window.
-        /// </summary>
-        public KeyCode toggleKey = KeyCode.BackQuote;
-
         /// <summary>
         /// Whether to open as soon as the game starts.
         /// </summary>
         public bool openOnStart = false;
-
-        /// <summary>
-        /// Whether to open the window by shaking the device (mobile-only).
-        /// </summary>
-        public bool shakeToOpen = true;
-
-        /// <summary>
-        /// The (squared) acceleration above which the window should open.
-        /// </summary>
-        public float shakeAcceleration = 3f;
 
         /// <summary>
         /// Whether to only keep a certain number of logs, useful if memory usage is a concern.
@@ -105,21 +89,16 @@ namespace DebugX.Cosole
             {
                 _isVisible = true;
             }
-            
-            DontDestroyOnLoad(this);
         }
 
-        void Update()
+        public void TurnOn()
         {
-            if (Input.GetKeyDown(toggleKey))
-            {
-                _isVisible = !_isVisible;
-            }
-            
-            if (shakeToOpen && Input.acceleration.sqrMagnitude > shakeAcceleration * 2f)
-            {
-                _isVisible = !_isVisible;
-            }
+            _isVisible = true;
+        }
+
+        public void TurnOff()
+        {
+            _isVisible = false;
         }
 
         #endregion
@@ -206,7 +185,7 @@ namespace DebugX.Cosole
 
                 if (GUILayout.Button(CloseButton))
                 {
-                    _isVisible = !_isVisible;
+                    TurnOff();
                 }
 
             GUILayout.EndHorizontal();

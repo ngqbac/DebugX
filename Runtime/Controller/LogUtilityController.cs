@@ -9,25 +9,27 @@ namespace DebugX.LogUtility
     {
         public static LogUtilityController Instance;
 
-        private bool _isOn;
-
-        public bool IsOn
-        {
-            get => _isOn;
-            set
-            {
-                if (value == _isOn) return;
-                _isOn = value;
-                LogUtilityAttribute.IsOn = value;
-            }
-        }
-        [ConditionalField(nameof(IsOn))] public ColorCollection color = new();
+        public bool isOn;
+        
+        [ConditionalField(nameof(isOn))] public ColorCollection color = new();
 
         private void Awake()
         {
-            Instance = this;
+            name = "LogUtility";
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                if (Instance != this)
+                {
+                    Destroy(this);
+                }
+            }
             LogUtilityAttribute.TypeColor = color.Value;
-            LogUtilityAttribute.IsOn = IsOn;
+            LogUtilityAttribute.IsOn = isOn;
             LogUtilityAttribute.Initialized = true;
         }
 
