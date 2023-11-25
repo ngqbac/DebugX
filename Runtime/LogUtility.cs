@@ -1,4 +1,5 @@
 using DebugX.Attribute;
+using DebugX.Internal;
 using UnityEngine;
 
 namespace DebugX.LogUtility
@@ -16,7 +17,7 @@ namespace DebugX.LogUtility
             }
 
             if (!LogUtilityAttribute.IsOn) return;
-            var message = log.Color(InternalUtility.GetStringFromColor(LogUtilityAttribute.TypeColor[(int)type]));
+            var message = log.Color(InternalUtility.ColorToString(LogUtilityAttribute.TypeColor[(int)type]));
             if (size != -1)
             {
                 message = message.Size(size);

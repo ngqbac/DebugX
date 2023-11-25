@@ -1,9 +1,10 @@
 using System;
 using DebugX.Attribute;
+using DebugX.Internal;
 using MyBox;
 using UnityEngine;
 
-namespace DebugX.LogUtility
+namespace DebugX
 {
     public class LogUtilityController : MonoBehaviour
     {
@@ -39,27 +40,27 @@ namespace DebugX.LogUtility
         {
             if (InternalUtility.CompareColor32(color.Value[0], new Color32()))
             {
-                color.Value[0] = InternalUtility.GetColorFromString("008000");
+                color.Value[0] = InternalUtility.GetColor("008000");
             }
             
             if (InternalUtility.CompareColor32(color.Value[1], new Color32()))
             {
-                color.Value[1] = InternalUtility.GetColorFromString("87CEEB");
+                color.Value[1] = InternalUtility.GetColor("87CEEB");
             }
             
             if (InternalUtility.CompareColor32(color.Value[2], new Color32()))
             {
-                color.Value[2] = InternalUtility.GetColorFromString("FFA500");
+                color.Value[2] = InternalUtility.GetColor("FFA500");
             }
             
             if (InternalUtility.CompareColor32(color.Value[3], new Color32()))
             {
-                color.Value[3] = InternalUtility.GetColorFromString("FF69B4");
+                color.Value[3] = InternalUtility.GetColor("FF69B4");
             }
             
             if (InternalUtility.CompareColor32(color.Value[4], new Color32()))
             {
-                color.Value[4] = InternalUtility.GetColorFromString("FF0000");
+                color.Value[4] = InternalUtility.GetColor("FF0000");
             }
         }
 

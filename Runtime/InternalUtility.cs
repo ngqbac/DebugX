@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DebugX
+namespace DebugX.Internal
 {
     public static class InternalUtility
     {
-        public static Color32 GetColorFromString(string colorCode)
+        public static Color32 GetColor(string colorCode)
         {
             if (colorCode.Length == 6)
             {
@@ -23,7 +23,7 @@ namespace DebugX
             return new Color(r, g, b, a);
         }
     
-        public static string GetStringFromColor(Color32 color)
+        public static string ColorToString(Color32 color)
         {
             return $"#{color.r:X2}{color.g:X2}{color.b:X2}{color.a:X2}";
         }
@@ -32,6 +32,24 @@ namespace DebugX
         {
             return color.r == compareColor.r && color.g == compareColor.g &&
                    color.b == compareColor.b && color.a == compareColor.a;
+        }
+        
+        public static Color[] GenerateSimilarColors(Color baseColor, int count, float delta)
+        {
+            var colors = new Color[count + 1];
+            colors[0] = baseColor;
+            for (var i = 1; i < count + 1; i++)
+            {
+                var offset = i * delta;
+                var similarColor = new Color(
+                    baseColor.r + offset,
+                    baseColor.g + offset,
+                    baseColor.b + offset
+                );
+                colors[i] = similarColor;
+            }
+
+            return colors;
         }
     
         public static string GenerateRandomString(int length)
@@ -87,5 +105,7 @@ namespace DebugX
                 return null;
             }
         }
+        
+        
     }
 }
