@@ -1,29 +1,15 @@
+using DebugX.Singleton;
 using UnityEngine;
 
 namespace DebugX.LogUtility
 {
-    public class Controller: MonoBehaviour
+    public class Controller: SingletonPersistent<Controller>
     {
-        public static Controller Instance;
-
         public bool isOn;
-        
-        private void Awake()
+
+        public override void Awake()
         {
-            name = "LogUtility";
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this);
-            }
-            else
-            {
-                if (Instance != this)
-                {
-                    Destroy(this);
-                }
-            }
-            
+            base.Awake();
             Attribute.IsOn = isOn;
             Attribute.Initialized = true;
         }
