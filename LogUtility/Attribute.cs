@@ -1,5 +1,8 @@
+using System;
+
 namespace DebugX.LogUtility
 {
+    [Flags]
     public enum LogUtilityType
     {
         /// <summary>

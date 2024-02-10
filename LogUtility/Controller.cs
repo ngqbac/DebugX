@@ -1,11 +1,11 @@
 using DebugX.Singleton;
-using UnityEngine;
 
 namespace DebugX.LogUtility
 {
     public class Controller: SingletonPersistent<Controller>
     {
         public bool isOn;
+        public LogUtilityType supportType;
 
         public override void Awake()
         {
