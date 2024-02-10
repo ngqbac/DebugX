@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace DebugX.LogUtility
 {
     public enum LogUtilityType

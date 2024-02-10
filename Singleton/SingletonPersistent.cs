@@ -12,6 +12,7 @@ namespace DebugX.Singleton
             if (Instance == null)
             {
                 Instance = this as T;
+                name = typeof(T).Name;
                 DontDestroyOnLoad(this);
             }
             else
