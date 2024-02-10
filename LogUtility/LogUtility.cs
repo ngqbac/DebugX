@@ -5,8 +5,7 @@ namespace DebugX.LogUtility
 {
     public static class LogUtility
     {
-        public static void SentLog(string log, LogUtilityType type, int size = -1, bool bold = false,
-            bool italic = false)
+        public static void SentLog(string log, LogType type, LogStyle logStyle)
         {
             if (!Attribute.Initialized)
             {
@@ -16,24 +15,33 @@ namespace DebugX.LogUtility
             }
 
             if (!Attribute.IsOn) return;
+            
             var message = log.Color(Attribute.ColorCode[(int)type]);
-            if (size != -1)
+            
+            ApplyStyle(ref message, logStyle);
+            Debug.Log($"{(int)type} {(int)Attribute.LOGFilter}");
+
+            Debug.Log(message);
+        }
+        
+        private static void ApplyStyle(ref string message, LogStyle logStyle)
+        {
+            if (logStyle.Size != -1)
             {
-                message = message.Size(size);
+                message = message.Size(logStyle.Size);
             }
 
-            if (bold)
+            if (logStyle.Bold)
             {
                 message = message.Bold();
             }
 
-            if (italic)
+            if (logStyle.Italic)
             {
                 message = message.Italic();
             }
-
-            Debug.Log(message);
         }
+
 
         public static void TurnOn()
         {
@@ -44,7 +52,6 @@ namespace DebugX.LogUtility
             else
             {
                 new GameObject().AddComponent<Controller>();
-                // new GameObject("LogUtility").AddComponent<Controller>();
                 Attribute.IsOn = true;
             }
         }

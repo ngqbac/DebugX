@@ -3,7 +3,7 @@ using System;
 namespace DebugX.LogUtility
 {
     [Flags]
-    public enum LogUtilityType
+    public enum LogType
     {
         None = 0,
 
@@ -40,6 +40,13 @@ namespace DebugX.LogUtility
         Everything = ~None
     }
 
+    public struct LogStyle
+    {
+        public int Size;
+        public bool Bold;
+        public bool Italic;
+    }
+
     public static class Attribute
     {
         public static bool Initialized;
@@ -60,9 +67,12 @@ namespace DebugX.LogUtility
             }
         }
 
+        public static LogType LOGFilter;
+        
         public static bool Notified;
 
-        public static readonly string[] ColorCode = {
+        public static readonly string[] ColorCode =
+        {
             "#FF0000",
             "#FFA500",
             "#008000",
