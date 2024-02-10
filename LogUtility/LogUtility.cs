@@ -17,7 +17,6 @@ namespace DebugX.LogUtility
 
             if (!Attribute.IsOn) return;
             var message = log.Color(Attribute.ColorCode[(int)type]);
-            // var message = log.Color(HelperUtility.Internal.ColorToString(Attribute.TypeColor[(int)type]));
             if (size != -1)
             {
                 message = message.Size(size);
@@ -34,6 +33,28 @@ namespace DebugX.LogUtility
             }
 
             Debug.Log(message);
+        }
+
+        public static void TurnOn()
+        {
+            if (Attribute.Initialized)
+            {
+                Attribute.IsOn = true;
+            }
+            else
+            {
+                new GameObject().AddComponent<Controller>();
+                // new GameObject("LogUtility").AddComponent<Controller>();
+                Attribute.IsOn = true;
+            }
+        }
+
+        public static void TurnOff()
+        {
+            if (Attribute.Initialized)
+            {
+                Attribute.IsOn = false;
+            }
         }
     }
 }
