@@ -5,35 +5,39 @@ namespace DebugX.LogUtility
     [Flags]
     public enum LogUtilityType
     {
+        None = 0,
+
         /// <summary>
         /// Indicates a critical issue or error in the application.
         /// </summary>
-        Error,
+        Error = 1 << 0,
 
         /// <summary>
         /// Highlights potential issues or situations that may cause problems in the future.
         /// </summary>
-        Warn,
+        Warn = 1 << 1,
 
         /// <summary>
         /// Provides general information about the application's state or activities.
         /// </summary>
-        Info,
+        Info = 1 << 2,
 
         /// <summary>
         /// Detailed information that may be useful for understanding the inner workings of the application.
         /// </summary>
-        Verbose,
+        Verbose = 1 << 3,
 
         /// <summary>
         /// Messages used for debugging purposes.
         /// </summary>
-        Debug,
+        Debug = 1 << 4,
 
         /// <summary>
         /// Extremely detailed and verbose information.
         /// </summary>
-        Silly
+        Silly = 1 << 5,
+
+        Everything = ~None
     }
 
     public static class Attribute
