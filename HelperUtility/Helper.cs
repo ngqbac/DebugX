@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace DebugX.HelperUtility
 {
-    public static class Internal
+    public static class Helper
     {
         public static Color32 StringToColor(string colorCode)
         {
@@ -113,5 +113,21 @@ namespace DebugX.HelperUtility
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + "";
         }
+
+        public static int GetEnumIndex<T>(T value) where T : Enum
+        {
+            var values = (T[])Enum.GetValues(typeof(T));
+            var index = Array.IndexOf(values, value);
+
+            if (Attribute.IsDefined(typeof(T), typeof(FlagsAttribute)))
+            {
+                // If the enum has the [Flags] attribute, subtract 1 to handle None value
+                index -= 1;
+            }
+
+            return index;
+        }
+
+
     }
 }

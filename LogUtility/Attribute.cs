@@ -1,10 +1,20 @@
 using System;
+using UnityEngine;
 
 namespace DebugX.LogUtility
 {
+    public enum LogFormat
+    {
+        Color,
+        Affix
+    }
+    
     [Flags]
     public enum LogType
     {
+        /// <summary>
+        /// Flag only
+        /// </summary>
         None = 0,
 
         /// <summary>
@@ -37,14 +47,32 @@ namespace DebugX.LogUtility
         /// </summary>
         Silly = 1 << 5,
 
+        /// <summary>
+        /// Flag only
+        /// </summary>
         Everything = ~None
     }
 
+    [Serializable]
     public struct LogStyle
     {
-        public int Size;
-        public bool Bold;
-        public bool Italic;
+        public int size;
+        public bool bold;
+        public bool italic;
+    }
+
+    [Serializable]
+    public struct LogAffix
+    {
+        public string prefix;
+        public string suffix;
+    }
+
+    [Serializable]
+    public struct LogColor
+    {
+        public string[] colorCode;
+        public Color[] colors;
     }
 
     public static class Attribute
@@ -67,9 +95,19 @@ namespace DebugX.LogUtility
             }
         }
 
-        public static LogType LOGFilter;
-        
+        public static LogFormat LogFormat;
+        public static LogColor LogColor;
+        public static LogAffix LogAffix;
+        public static LogType LogFilter;
+        public static LogStyle LogStyle;
+
         public static bool Notified;
+
+        public static string ToJson()
+        {
+            return
+                $"IsOn: {_isOn}\nLogFormat: {LogFormat.ToString()}\nLogFilter: {JsonUtility.ToJson(LogFilter)}\nAffix: {JsonUtility.ToJson(LogAffix)}\nLogStyle: {JsonUtility.ToJson(LogStyle)}";
+        }
 
         public static readonly string[] ColorCode =
         {

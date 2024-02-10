@@ -1,11 +1,12 @@
 using DebugX.Extensions;
+using DebugX.HelperUtility;
 using UnityEngine;
 
 namespace DebugX.LogUtility
 {
     public static class LogUtility
     {
-        public static void SentLog(string log, LogType type, LogStyle logStyle)
+        public static void SentLog(string log, LogType type, LogStyle logStyle = default)
         {
             if (!Attribute.Initialized)
             {
@@ -15,33 +16,52 @@ namespace DebugX.LogUtility
             }
 
             if (!Attribute.IsOn) return;
-            
-            var message = log.Color(Attribute.ColorCode[(int)type]);
-            
-            ApplyStyle(ref message, logStyle);
-            Debug.Log($"{(int)type} {(int)Attribute.LOGFilter}");
 
-            Debug.Log(message);
+            if (type == LogType.None) return;
+
+            if (type == LogType.Everything) return;
+
+            if (Attribute.LogFormat == LogFormat.Color)
+            {
+                log = log.Color(Attribute.ColorCode[Helper.GetEnumIndex(type)]);
+                ApplyStyle(ref log, logStyle);
+            }
+            else
+            {
+                log = log.Prefix(Attribute.LogAffix.prefix);
+                log = log.Suffix(Attribute.LogAffix.suffix);
+            }
+
+            WriteLog(log, type);
         }
         
         private static void ApplyStyle(ref string message, LogStyle logStyle)
         {
-            if (logStyle.Size != -1)
+            if (logStyle.Equals(default(LogStyle)))
             {
-                message = message.Size(logStyle.Size);
+                logStyle = Attribute.LogStyle;
             }
-
-            if (logStyle.Bold)
+            
+            message = message.Size(logStyle.size);
+            
+            if (logStyle.bold)
             {
                 message = message.Bold();
             }
 
-            if (logStyle.Italic)
+            if (logStyle.italic)
             {
                 message = message.Italic();
             }
         }
 
+        private static void WriteLog(string message, LogType type)
+        {
+            if ((type & Attribute.LogFilter) != 0)
+            {
+                Debug.Log(message);
+            }
+        }
 
         public static void TurnOn()
         {

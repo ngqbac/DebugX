@@ -1,23 +1,35 @@
 using DebugX.Singleton;
+using DebugX.HelperUtility;
 
 namespace DebugX.LogUtility
 {
     public class Controller: SingletonPersistent<Controller>
     {
-        public bool isOn;
+        public bool isOn = true;
+        public LogFormat logFormat = LogFormat.Color;
+        [ConditionalField(nameof(logFormat), false, LogFormat.Color)]
+        public LogColor logColor;
+        [ConditionalField(nameof(logFormat), false, LogFormat.Affix)]
+        public LogAffix logAffix;
         public LogType logFilter = LogType.Everything;
-        public LogStyle LOGStyle;
+        public LogStyle logStyle;
 
         public override void Awake()
         {
             base.Awake();
 
-            LOGStyle.Size = 10;
-            LOGStyle.Bold = false;
-            LOGStyle.Italic = false;
+            Attribute.LogFormat = logFormat;
+            Attribute.LogColor = logColor;
+            Attribute.LogAffix = logAffix;
+            
+            Attribute.LogFilter = logFilter;
+
+            Attribute.LogStyle = logStyle;
             
             Attribute.IsOn = isOn;
             Attribute.Initialized = true;
+            
+            print($"LogUtility initialized!!!\n{Attribute.ToJson()}");
         }
     }
 }
