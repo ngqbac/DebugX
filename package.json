@@ -8,8 +8,7 @@
     "Debug"
   ],
   "files": [
-    "Assets/DebugX",
-    "DebugX.targets"
+    "Assets/DebugX"
   ],
   "author": {
     "name": "Nguyễn Quang Bắc",
