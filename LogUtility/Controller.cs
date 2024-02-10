@@ -5,7 +5,7 @@ namespace DebugX.LogUtility
     public class Controller: SingletonPersistent<Controller>
     {
         public bool isOn;
-        public LogUtilityType supportType;
+        public LogUtilityType supportType = LogUtilityType.Everything;
 
         public override void Awake()
         {
