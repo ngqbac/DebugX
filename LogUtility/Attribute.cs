@@ -56,7 +56,14 @@ namespace DebugX.LogUtility
         }
 
         public static bool Notified;
-        
-        public static Color32[] TypeColor = new Color32[5];
+
+        public static readonly string[] ColorCode = {
+            "#FF0000",
+            "#FFA500",
+            "#008000",
+            "#0000FF",
+            "#808080",
+            "#D3D3D3"
+        };
     }
 }

@@ -16,7 +16,8 @@ namespace DebugX.LogUtility
             }
 
             if (!Attribute.IsOn) return;
-            var message = log.Color(HelperUtility.Internal.ColorToString(Attribute.TypeColor[(int)type]));
+            var message = log.Color(Attribute.ColorCode[(int)type]);
+            // var message = log.Color(HelperUtility.Internal.ColorToString(Attribute.TypeColor[(int)type]));
             if (size != -1)
             {
                 message = message.Size(size);
