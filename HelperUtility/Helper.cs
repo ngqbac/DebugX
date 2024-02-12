@@ -23,7 +23,6 @@ namespace DebugX.HelperUtility
                 var g = (byte)((hex & 0x00FF0000) >> 16);
                 var b = (byte)((hex & 0x0000FF00) >> 8);
                 var a = (byte)(hex & 0x000000FF);
-                Debug.Log($"{colorCode}: {r} {g} {b} {a}");
                 return new Color32(r, g, b, a);
             }
             else
@@ -35,8 +34,7 @@ namespace DebugX.HelperUtility
         
         private static Color HexToColor(string hex)
         {
-            Color color = Color.white;
-            ColorUtility.TryParseHtmlString(hex, out color);
+            ColorUtility.TryParseHtmlString(hex, out var color);
             return color;
         }
 
