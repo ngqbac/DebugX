@@ -69,10 +69,29 @@ namespace DebugX.LogUtility
     }
 
     [Serializable]
-    public struct LogColor
+    public class LogColor
     {
-        public string[] colorCode;
-        public Color[] colors;
+        public Color32 error = new(255, 0, 0, 255);
+        public Color32 warn = new(255, 165, 0, 255);
+        public Color32 info = new(0, 128, 0, 255);
+        public Color32 verbose = new(0, 0, 255, 255);
+        public Color32 debug = new(128, 128, 128, 255);
+        public Color32 silly = new(211, 211, 211, 255);
+        private string[] _colorCode;
+        public string GetColorCode(int index)
+        {
+            _colorCode = new[]
+            {
+                $"#{ColorUtility.ToHtmlStringRGB(error)}",
+                $"#{ColorUtility.ToHtmlStringRGB(warn)}",
+                $"#{ColorUtility.ToHtmlStringRGB(info)}",
+                $"#{ColorUtility.ToHtmlStringRGB(verbose)}",
+                $"#{ColorUtility.ToHtmlStringRGB(debug)}",
+                $"#{ColorUtility.ToHtmlStringRGB(silly)}",
+            };
+            return _colorCode[index];
+        }
+
     }
 
     public static class Attribute
@@ -109,14 +128,14 @@ namespace DebugX.LogUtility
                 $"IsOn: {_isOn}\nLogFormat: {LogFormat.ToString()}\nLogFilter: {JsonUtility.ToJson(LogFilter)}\nAffix: {JsonUtility.ToJson(LogAffix)}\nLogStyle: {JsonUtility.ToJson(LogStyle)}";
         }
 
-        public static readonly string[] ColorCode =
-        {
-            "#FF0000",
-            "#FFA500",
-            "#008000",
-            "#0000FF",
-            "#808080",
-            "#D3D3D3"
-        };
+        // public static readonly string[] ColorCode =
+        // {
+        //     "#FF0000",
+        //     "#FFA500",
+        //     "#008000",
+        //     "#0000FF",
+        //     "#808080",
+        //     "#D3D3D3"
+        // };
     }
 }

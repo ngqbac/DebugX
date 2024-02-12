@@ -23,7 +23,7 @@ namespace DebugX.LogUtility
 
             if (Attribute.LogFormat == LogFormat.Color)
             {
-                log = log.Color(Attribute.ColorCode[Helper.GetEnumIndex(type)]);
+                log = log.Color(Attribute.LogColor.GetColorCode(Helper.GetEnumIndex(type)));
                 ApplyStyle(ref log, logStyle);
             }
             else

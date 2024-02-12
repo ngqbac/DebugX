@@ -6,12 +6,17 @@ namespace DebugX.LogUtility
     public class Controller: SingletonPersistent<Controller>
     {
         public bool isOn = true;
+        
         public LogFormat logFormat = LogFormat.Color;
+        
         [ConditionalField(nameof(logFormat), false, LogFormat.Color)]
         public LogColor logColor;
+        
         [ConditionalField(nameof(logFormat), false, LogFormat.Affix)]
         public LogAffix logAffix;
+        
         public LogType logFilter = LogType.Everything;
+        
         public LogStyle logStyle;
 
         public override void Awake()

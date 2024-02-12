@@ -19,11 +19,11 @@ namespace DebugX.HelperUtility
 
             if (uint.TryParse(colorCode, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint hex))
             {
-                byte r = (byte)((hex & 0xFF000000) >> 24);
-                byte g = (byte)((hex & 0x00FF0000) >> 16);
-                byte b = (byte)((hex & 0x0000FF00) >> 8);
-                byte a = (byte)(hex & 0x000000FF);
-
+                var r = (byte)((hex & 0xFF000000) >> 24);
+                var g = (byte)((hex & 0x00FF0000) >> 16);
+                var b = (byte)((hex & 0x0000FF00) >> 8);
+                var a = (byte)(hex & 0x000000FF);
+                Debug.Log($"{colorCode}: {r} {g} {b} {a}");
                 return new Color32(r, g, b, a);
             }
             else
@@ -31,6 +31,13 @@ namespace DebugX.HelperUtility
                 // Handle invalid color code
                 return Color.black;
             }
+        }
+        
+        private static Color HexToColor(string hex)
+        {
+            Color color = Color.white;
+            ColorUtility.TryParseHtmlString(hex, out color);
+            return color;
         }
 
         public static string ColorToString(Color32 color, bool includeAlpha = true)
