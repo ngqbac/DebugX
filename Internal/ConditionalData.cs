@@ -86,7 +86,7 @@ namespace DebugX.Internal
 
             if (method == null || method.ReturnType != typeof(bool))
             {
-                ConditionalUtility.LogMethodNotFound((Object)owner, _predicateMethod);
+                ConditionalExtension.LogMethodNotFound((Object)owner, _predicateMethod);
                 _cachedMethodInfo = null;
             }
             else _cachedMethodInfo = method;

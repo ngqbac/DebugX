@@ -49,7 +49,7 @@ namespace DebugX.Attributes.Internal
             if (!(attribute is ConditionalFieldAttribute conditional)) return EditorGUI.GetPropertyHeight(property);
 
             CachePropertyDrawer(property);
-            _toShow = ConditionalUtility.IsPropertyConditionMatch(property, conditional.Data);
+            _toShow = ConditionalExtension.IsPropertyConditionMatch(property, conditional.Data);
             if (!_toShow) return -2;
 
             if (_customPropertyDrawer != null) return _customPropertyDrawer.GetPropertyHeight(property, label);
@@ -95,7 +95,7 @@ namespace DebugX.Attributes.Internal
             _initialized = true;
             if (fieldInfo == null) return;
 
-            var customDrawer = CustomDrawerUtility.GetPropertyDrawerForProperty(property, fieldInfo, attribute) ??
+            var customDrawer = CustomDrawerExtension.GetPropertyDrawerForProperty(property, fieldInfo, attribute) ??
                                TryCreateAttributeDrawer();
 
             _customPropertyDrawer = customDrawer;
@@ -108,10 +108,10 @@ namespace DebugX.Attributes.Internal
                 if (secondAttribute == null) return null;
 
                 var attributeType = secondAttribute.GetType();
-                var customDrawerType = CustomDrawerUtility.GetPropertyDrawerTypeForFieldType(attributeType);
+                var customDrawerType = CustomDrawerExtension.GetPropertyDrawerTypeForFieldType(attributeType);
                 if (customDrawerType == null) return null;
 
-                return CustomDrawerUtility.InstantiatePropertyDrawer(customDrawerType, fieldInfo, secondAttribute);
+                return CustomDrawerExtension.InstantiatePropertyDrawer(customDrawerType, fieldInfo, secondAttribute);
 
 
                 //Get second attribute if any

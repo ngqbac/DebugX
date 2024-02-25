@@ -160,7 +160,7 @@ namespace DebugX.Extensions
             }
         }
 
-        public static string GetFixedPropertyPath(this SerializedProperty property) =>
+        private static string GetFixedPropertyPath(this SerializedProperty property) =>
             property.propertyPath.Replace(".Array.data[", "[");
 
         public static int GetUniquePropertyId(this SerializedProperty property)

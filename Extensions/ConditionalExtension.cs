@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DebugX.Extensions
 {
-    public static class ConditionalUtility
+    public static class ConditionalExtension
     {
         public static bool IsConditionMatch(UnityEngine.Object owner, ConditionalData condition)
         {
@@ -156,9 +156,7 @@ namespace DebugX.Extensions
 
                 parent = i == 0
                     ? property.serializedObject.FindProperty(element)
-                    : parent != null
-                        ? parent.FindPropertyRelative(element)
-                        : null;
+                    : parent?.FindPropertyRelative(element);
 
                 if (index >= 0 && parent != null) parent = parent.GetArrayElementAtIndex(index);
             }

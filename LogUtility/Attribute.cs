@@ -13,7 +13,7 @@ namespace DebugX.LogUtility
     public enum LogType
     {
         /// <summary>
-        /// Flag only
+        /// No log
         /// </summary>
         None = 0,
 
@@ -48,7 +48,7 @@ namespace DebugX.LogUtility
         Silly = 1 << 5,
 
         /// <summary>
-        /// Flag only
+        /// All log
         /// </summary>
         Everything = ~None
     }
@@ -64,6 +64,12 @@ namespace DebugX.LogUtility
     [Serializable]
     public struct LogAffix
     {
+        public LogAffix(string prefixIn, string suffixIn)
+        {
+            prefix = prefixIn;
+            suffix = suffixIn;
+        }
+        
         public string prefix;
         public string suffix;
     }
@@ -120,6 +126,17 @@ namespace DebugX.LogUtility
         public static LogType LogFilter;
         public static LogStyle LogStyle;
 
+        public static readonly string[] LogTypeName = {
+            "None",
+            "Error",
+            "Warn",
+            "Info",
+            "Verbose",
+            "Debug",
+            "Silly",
+            "Everything"
+        };
+
         public static bool Notified;
 
         public static string ToJson()
@@ -127,15 +144,5 @@ namespace DebugX.LogUtility
             return
                 $"IsOn: {_isOn}\nLogFormat: {LogFormat.ToString()}\nLogFilter: {JsonUtility.ToJson(LogFilter)}\nAffix: {JsonUtility.ToJson(LogAffix)}\nLogStyle: {JsonUtility.ToJson(LogStyle)}";
         }
-
-        // public static readonly string[] ColorCode =
-        // {
-        //     "#FF0000",
-        //     "#FFA500",
-        //     "#008000",
-        //     "#0000FF",
-        //     "#808080",
-        //     "#D3D3D3"
-        // };
     }
 }

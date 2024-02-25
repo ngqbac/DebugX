@@ -1,3 +1,4 @@
+using System;
 using DebugX.Extensions;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace DebugX.LogUtility
 {
     public static class LogUtility
     {
-        public static void SentLog(string log, LogType type, LogStyle logStyle = default)
+        public static void SentLog(object message, LogType type, LogStyle logStyle = default)
         {
             if (!Attribute.Initialized)
             {
@@ -19,6 +20,8 @@ namespace DebugX.LogUtility
             if (type == LogType.None) return;
 
             if (type == LogType.Everything) return;
+            
+            var log = string.Join("", message);
 
             if (Attribute.LogFormat == LogFormat.Color)
             {
@@ -27,8 +30,11 @@ namespace DebugX.LogUtility
             }
             else
             {
-                log = log.Prefix(Attribute.LogAffix.prefix);
-                log = log.Suffix(Attribute.LogAffix.suffix);
+                // log = log.Prefix("-----" + Attribute.LogAffix.prefix + "-----");
+                // log = log.Suffix("-----" + Attribute.LogAffix.suffix + "-----");
+                // Debug.Log($"{Enum.GetValues()} | {Attribute.LogTypeName.Length}");
+                log = log.Prefix($"-----{Attribute.LogAffix.prefix}({Attribute.LogTypeName[type.GetIndex()]})-----");
+                log = log.Suffix($"-----{Attribute.LogAffix.suffix}-----");
             }
 
             WriteLog(log, type);

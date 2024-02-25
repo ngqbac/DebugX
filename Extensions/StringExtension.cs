@@ -22,6 +22,8 @@ namespace DebugX.Extensions
         public static string Italic(this string str) => "<i>" + str + "</i>";
         public static string Size(this string str, int size) => $"<size={size}>{str}</size>";
         public static string Suffix(this string str, string suffix) => $"{str}{suffix}";
+        public static string Suffix(this string str, object suffix) => $"{str}{string.Join("", suffix)}";
         public static string Prefix(this string str, string prefix) => $"{prefix}{str}";
+        public static string Prefix(this string str, object prefix) => $"{string.Join("", prefix)}{str}";
     }
 }

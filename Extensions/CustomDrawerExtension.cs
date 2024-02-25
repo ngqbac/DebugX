@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DebugX.Extensions
 {
-	public static class CustomDrawerUtility
+	public static class CustomDrawerExtension
 	{
 		/// <summary>
 		/// Key is Associated with drawer type (the T in [CustomPropertyDrawer(typeof(T))])

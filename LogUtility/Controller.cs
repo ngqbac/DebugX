@@ -13,7 +13,7 @@ namespace DebugX.LogUtility
         public LogColor logColor;
         
         [ConditionalField(nameof(logFormat), false, LogFormat.Affix)]
-        public LogAffix logAffix;
+        public LogAffix logAffix = new("StartOfLog", "EndOfLog");
         
         public LogType logFilter = LogType.Everything;
         

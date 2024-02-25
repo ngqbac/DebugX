@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Log = DebugX.LogUtility.LogUtility;
+using LogType = DebugX.LogUtility.LogType;
 
 namespace DebugX.Singleton
 {
@@ -10,26 +12,24 @@ namespace DebugX.Singleton
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null) return _instance;
+                var objs = FindObjectsOfType(typeof(T)) as T[];
+                if (objs is { Length: > 0 })
                 {
-                    var objs = FindObjectsOfType(typeof(T)) as T[];
-                    if (objs is { Length: > 0 })
-                    {
-                        _instance = objs[0];
-                    }
-
-                    if (objs is { Length: > 1 })
-                    {
-                        Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
-                    }
-
-                    if (_instance != null) return _instance;
-                    var obj = new GameObject
-                    {
-                        name = $"_{typeof(T).Name}"
-                    };
-                    _instance = obj.AddComponent<T>();
+                    _instance = objs[0];
                 }
+
+                if (objs is { Length: > 1 })
+                {
+                    Log.SentLog("There is more than one" + typeof(T).Name + "in the scene.", LogType.Error);
+                }
+
+                if (_instance != null) return _instance;
+                var obj = new GameObject
+                {
+                    name = $"_{typeof(T).Name}"
+                };
+                _instance = obj.AddComponent<T>();
 
                 return _instance;
             }
