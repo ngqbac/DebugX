@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using DebugX.Editor;
+using DebugX.Extensions;
 using UnityEngine;
 using DebugX.Internal;
 

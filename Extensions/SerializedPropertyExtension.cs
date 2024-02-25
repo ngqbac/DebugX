@@ -1,4 +1,4 @@
-// #if UNITY_EDITOR
+#if UNITY_EDITOR
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 
-namespace DebugX.Editor
+namespace DebugX.Extensions
 {
     public static class SerializedPropertyExtension
     {
@@ -168,4 +168,4 @@ namespace DebugX.Editor
                + property.propertyPath.GetHashCode();
     }
 }
-// #endif
+#endif
