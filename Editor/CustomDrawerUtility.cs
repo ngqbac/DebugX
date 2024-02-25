@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿// #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using DebugX.Extensions;
 using UnityEditor;
 using UnityEngine;
 
-namespace DebugX.HelperUtility.Internal
+namespace DebugX.Editor
 {
 	public static class CustomDrawerUtility
 	{
@@ -123,4 +123,4 @@ namespace DebugX.HelperUtility.Internal
 		}
 	}
 }
-#endif
+// #endif

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using DebugX.Editor;
 using DebugX.Extensions;
 using UnityEngine;
 
-namespace DebugX.HelperUtility.Internal
+namespace DebugX.Internal
 {
     public class ConditionalData
     {

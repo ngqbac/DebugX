@@ -1,11 +1,12 @@
-﻿#if UNITY_EDITOR
+﻿// #if UNITY_EDITOR
 using System;
 using System.Reflection;
 using DebugX.Extensions;
+using DebugX.Internal;
 using UnityEditor;
 using UnityEngine;
 
-namespace DebugX.HelperUtility.Internal
+namespace DebugX.Editor
 {
 	public static class ConditionalUtility
 	{
@@ -165,4 +166,4 @@ namespace DebugX.HelperUtility.Internal
 		}
 	}
 }
-#endif
+// #endif

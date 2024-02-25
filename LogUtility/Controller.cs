@@ -1,5 +1,5 @@
 using DebugX.Singleton;
-using DebugX.HelperUtility;
+using DebugX.Attributes;
 
 namespace DebugX.LogUtility
 {

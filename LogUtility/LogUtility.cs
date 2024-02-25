@@ -1,5 +1,4 @@
 using DebugX.Extensions;
-using DebugX.HelperUtility;
 using UnityEngine;
 
 namespace DebugX.LogUtility
@@ -23,7 +22,7 @@ namespace DebugX.LogUtility
 
             if (Attribute.LogFormat == LogFormat.Color)
             {
-                log = log.Color(Attribute.LogColor.GetColorCode(Helper.GetEnumIndex(type)));
+                log = log.Color(Attribute.LogColor.GetColorCode(Utility.GetEnumIndex(type)));
                 ApplyStyle(ref log, logStyle);
             }
             else

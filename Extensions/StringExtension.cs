@@ -9,14 +9,13 @@ namespace DebugX.Extensions
 
         public static string RemoveStart(this string str, string remove)
         {
-            int index = str.IndexOf(remove, StringComparison.Ordinal);
+            var index = str.IndexOf(remove, StringComparison.Ordinal);
             return index < 0 ? str : str.Remove(index, remove.Length);
         }
 		
         public static string RemoveEnd(this string str, string remove)
         {
-            if (!str.EndsWith(remove)) return str;
-            return str.Remove(str.LastIndexOf(remove, StringComparison.Ordinal));
+            return !str.EndsWith(remove) ? str : str.Remove(str.LastIndexOf(remove, StringComparison.Ordinal));
         }
         public static string Bold(this string str) => "<b>" + str + "</b>";
         public static string Color(this string str, string color) => $"<color={color}>{str}</color>";

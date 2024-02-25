@@ -6,9 +6,9 @@ using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DebugX.HelperUtility
+namespace DebugX
 {
-    public static class Helper
+    public static class Utility
     {
         public static Color32 StringToColor(string colorCode)
         {

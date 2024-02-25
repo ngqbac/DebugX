@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
+using DebugX.Editor;
 using UnityEngine;
-using DebugX.HelperUtility.Internal;
+using DebugX.Internal;
 
-namespace DebugX.HelperUtility
+namespace DebugX.Attributes
 {
     /// <summary>
     /// Conditionally Show/Hide field in inspector, based on some other field or property value
@@ -32,7 +33,7 @@ namespace DebugX.HelperUtility
 }
 
 #if UNITY_EDITOR
-namespace DebugX.HelperUtility.Internal
+namespace DebugX.Attributes.Internal
 {
     using UnityEditor;
 
@@ -75,7 +76,7 @@ namespace DebugX.HelperUtility.Internal
                 {
                     Debug.Log(
                         $"{property}, Unable to use CustomDrawer of type {_customPropertyDrawer.GetType()}: {e}, {property.serializedObject.targetObject}");
-                    
+
                     // WarningsPool.LogWarning(property,
                     // 	"Unable to use CustomDrawer of type " + _customPropertyDrawer.GetType() + ": " + e,
                     // 	property.serializedObject.targetObject);
