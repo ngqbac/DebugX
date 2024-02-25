@@ -151,35 +151,35 @@ namespace DebugX
 
             return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
         }
-        
-        public static string GetTextWithRichTag(string root, string target)
-        {
-            var index = root.IndexOf(target, StringComparison.Ordinal);
-            if (index == -1) return target; // Target word not found
-
-            var openingTagIndex = root.IndexOf("<", index, StringComparison.Ordinal);
-            var closingTagIndex = root.LastIndexOf(">", index + target.Length, StringComparison.Ordinal);
-
-            // Check if the '>' character is part of a rich text tag
-            if (openingTagIndex >= 0 && closingTagIndex >= 0)
-            {
-                var richText = root.Substring(openingTagIndex, closingTagIndex - openingTagIndex + 1);
-                return richText;
-            }
-
-            // If '>' is not part of a rich text tag, check for the closest '<' characters
-            var leftBracketIndex = root.IndexOf("<", index - 1, StringComparison.Ordinal);
-            var rightBracketIndex = root.LastIndexOf(">", index + target.Length, StringComparison.Ordinal);
-
-            // Check if the closest '<' is before the target and the closest '>' is after the target
-            if (leftBracketIndex >= 0 && rightBracketIndex >= 0 && leftBracketIndex < index && rightBracketIndex > index + target.Length)
-            {
-                var nonRichText = root.Substring(leftBracketIndex, rightBracketIndex - leftBracketIndex + 1);
-                return nonRichText;
-            }
-
-            return target; // No rich text tags found
-        }
+        //
+        // public static string GetTextWithRichTag(string root, string target)
+        // {
+        //     var index = root.IndexOf(target, StringComparison.Ordinal);
+        //     if (index == -1) return target; // Target word not found
+        //
+        //     var openingTagIndex = root.IndexOf("<", index, StringComparison.Ordinal);
+        //     var closingTagIndex = root.LastIndexOf(">", index + target.Length, StringComparison.Ordinal);
+        //
+        //     // Check if the '>' character is part of a rich text tag
+        //     if (openingTagIndex >= 0 && closingTagIndex >= 0)
+        //     {
+        //         var richText = root.Substring(openingTagIndex, closingTagIndex - openingTagIndex + 1);
+        //         return richText;
+        //     }
+        //
+        //     // If '>' is not part of a rich text tag, check for the closest '<' characters
+        //     var leftBracketIndex = root.IndexOf("<", index - 1, StringComparison.Ordinal);
+        //     var rightBracketIndex = root.LastIndexOf(">", index + target.Length, StringComparison.Ordinal);
+        //
+        //     // Check if the closest '<' is before the target and the closest '>' is after the target
+        //     if (leftBracketIndex >= 0 && rightBracketIndex >= 0 && leftBracketIndex < index && rightBracketIndex > index + target.Length)
+        //     {
+        //         var nonRichText = root.Substring(leftBracketIndex, rightBracketIndex - leftBracketIndex + 1);
+        //         return nonRichText;
+        //     }
+        //
+        //     return target; // No rich text tags found
+        // }
 
 
 
