@@ -1,3 +1,6 @@
+## <span style="color:orange">[Version 1.3.4]</span> - 2024-03-17
+- <b><span style="color:green">Added:</span></b> Minor changes
+
 ## <span style="color:orange">[Version 1.3.3]</span> - 2024-02-26
 - <b><span style="color:green">Added:</span></b> RendererExtensions
 
