@@ -1,6 +1,6 @@
 {
   "name": "com.bacnq.debugx",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "displayName": "DebugX",
   "description": "Proper debug for Unity project come with some helpful function\n\nMain features: \n▪ Proper log. \n▪ Proper console GUI for multiple platform (On-going).",
   "unity": "2019.4",
