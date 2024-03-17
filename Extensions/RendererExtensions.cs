@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace DebugX.Extensions
 {
     public static class RendererExtensions
     {
+        [PublicAPI]
         public static void AddMaterial(this Renderer meshRenderer, Material material)
         {
             var currentMats = meshRenderer.sharedMaterials;
@@ -42,6 +44,5 @@ namespace DebugX.Extensions
             var newMats = currentMats.Where((mat, i) => i != index).ToArray();
             meshRenderer.sharedMaterials = newMats;
         }
-
     }
 }

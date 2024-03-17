@@ -1,4 +1,3 @@
-using System;
 using DebugX.Extensions;
 using UnityEngine;
 
@@ -6,12 +5,12 @@ namespace DebugX.LogUtility
 {
     public static class LogUtility
     {
-        public static void SentLog(object message, LogType type, LogStyle logStyle = default)
+        public static void SentLog(object message, LogType type = LogType.Silly, LogStyle logStyle = default)
         {
             if (!Attribute.Initialized)
             {
                 if (Attribute.Notified) return;
-                Debug.Log("LogUtility has not been initialized.");
+                Debug.LogWarning("LogUtility has not been initialized.");
                 Attribute.Notified = true;
             }
 
@@ -30,9 +29,6 @@ namespace DebugX.LogUtility
             }
             else
             {
-                // log = log.Prefix("-----" + Attribute.LogAffix.prefix + "-----");
-                // log = log.Suffix("-----" + Attribute.LogAffix.suffix + "-----");
-                // Debug.Log($"{Enum.GetValues()} | {Attribute.LogTypeName.Length}");
                 log = log.Prefix($"-----{Attribute.LogAffix.prefix}({Attribute.LogTypeName[type.GetIndex()]})-----");
                 log = log.Suffix($"-----{Attribute.LogAffix.suffix}-----");
             }
