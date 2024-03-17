@@ -34,7 +34,7 @@ namespace DebugX.LogUtility
             Attribute.IsOn = isOn;
             Attribute.Initialized = true;
             
-            print($"LogUtility initialized!!!\n{Attribute.ToJson()}");
+            LogUtility.SentLog($"LogUtility initialized!!!\n{Attribute.ToJson()}");
         }
     }
 }
