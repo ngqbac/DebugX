@@ -8,5 +8,10 @@
     "name": "Nguyễn Quang Bắc",
     "email": "ngqbac@gmail.com",
     "url": "https://bacnq.com"
-  }
+  },
+  "keywords": [
+    "unity",
+    "package"
+  ],
+  "unityRelease": "2019.4"
 }
