@@ -24,5 +24,6 @@ jobs:
    
    # Publish to npm
    - run: npm publish --access public
+     working-directory: my-package
      env:
        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
