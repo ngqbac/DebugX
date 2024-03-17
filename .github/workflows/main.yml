@@ -25,4 +25,4 @@ jobs:
    # Publish to npm
    - run: npm publish --access public
      env:
-       NODE_AUTH_TOKEN: ${{secrets.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}}
+       NODE_AUTH_TOKEN: ${{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}}
